@@ -18,7 +18,6 @@
       line-height: 1.6;
       padding: 20px;
     }
-    /* Contenedor principal */
     .container {
       max-width: 1000px;
       margin: 0 auto;
@@ -27,9 +26,8 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       overflow: hidden;
     }
-    /* Cabecera */
     header {
-      background-color: #e0f7f0; /* Verde menta suave */
+      background-color: #e0f7f0;
       padding: 20px;
       display: flex;
       align-items: center;
@@ -44,7 +42,6 @@
       font-size: 1.8em;
       color: #2d7a6d;
     }
-    /* Secciones institucionales */
     section {
       padding: 20px;
       border-bottom: 1px solid #eee;
@@ -60,7 +57,6 @@
       margin-bottom: 10px;
       text-align: justify;
     }
-    /* Acordeón para cursos y talleres */
     .accordion {
       border: 1px solid #ddd;
       border-radius: 5px;
@@ -95,7 +91,6 @@
       background-color: #fafafa;
       display: none;
     }
-    /* Formulario de agendamiento */
     form {
       padding: 20px;
     }
@@ -137,7 +132,6 @@
     form button:hover {
       background-color: #245e54;
     }
-    /* Mensaje de confirmación */
     .confirmation {
       margin-top: 15px;
       background-color: #d4edda;
@@ -147,7 +141,6 @@
       border-radius: 5px;
       display: none;
     }
-    /* Responsive */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -161,14 +154,10 @@
 </head>
 <body>
   <div class="container">
-    <!-- Cabecera institucional -->
     <header>
-      <!-- Logo cargado desde GitHub -->
       <img src="https://raw.githubusercontent.com/sandragalo/thecookery3/main/logo_TheCookery2.png" alt="Logo The Cookery">
       <h1>Escuela de Cocina para Niños</h1>
     </header>
-
-    <!-- Información institucional -->
     <section id="institucional">
       <h2>¿Quiénes somos?</h2>
       <p>Somos una escuela de cocina para niños y adultos, comprometidos con la educación y el entretenimiento culinario.</p>
@@ -179,12 +168,9 @@
       <h2>Valores</h2>
       <p>Creatividad, Respeto por los alimentos, Salud y bienestar, inclusión, aprendizaje activo, seguridad alimentaria, trabajo en equipo, responsabilidad, empoderamiento, divertimento.</p>
     </section>
-
-    <!-- Cursos y talleres (acordeón) -->
     <section id="cursos">
       <h2>Cursos y Talleres</h2>
       <div class="accordion">
-        <!-- Viernes de Consejo -->
         <div class="accordion-item">
           <div class="accordion-header">
             <span class="title">Viernes de Consejo</span>
@@ -194,7 +180,6 @@
             <p>Los viernes de consejo técnico se transforman en un viernes de cocina para los niños, fusionando creatividad, aprendizaje y diversión.</p>
           </div>
         </div>
-        <!-- Clase de Mujeres -->
         <div class="accordion-item">
           <div class="accordion-header">
             <span class="title">Clase de Mujeres</span>
@@ -204,7 +189,6 @@
             <p>Un espacio dedicado a las mujeres para compartir, experimentar y crear nuevas recetas en un ambiente de apoyo y colaboración.</p>
           </div>
         </div>
-        <!-- Clases por la Tarde -->
         <div class="accordion-item">
           <div class="accordion-header">
             <span class="title">Clases por la Tarde</span>
@@ -214,7 +198,6 @@
             <p>Un espacio para experimentar con recetas innovadoras y promover el aprendizaje activo durante las tardes.</p>
           </div>
         </div>
-        <!-- Clase de Parejas -->
         <div class="accordion-item">
           <div class="accordion-header">
             <span class="title">Clase de Parejas</span>
@@ -224,7 +207,6 @@
             <p>El momento especial para reconectar con tu pareja, disfrutando de la cocina y creando recuerdos únicos.</p>
           </div>
         </div>
-        <!-- Evento Privado -->
         <div class="accordion-item">
           <div class="accordion-header">
             <span class="title">Evento Privado</span>
@@ -236,8 +218,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Formulario para agendar clases -->
     <section id="formulario">
       <h2>Agenda tu Clase</h2>
       <form id="bookingForm">
@@ -288,10 +268,7 @@
       </form>
     </section>
   </div>
-
-  <!-- JavaScript: Funciones de Acordeón, validación y envío del formulario -->
   <script>
-    // Acordeón: Alterna la visibilidad de la descripción de cada especialidad
     document.querySelectorAll('.accordion-header').forEach(header => {
       header.addEventListener('click', function() {
         const content = this.nextElementSibling;
@@ -306,19 +283,16 @@
       });
     });
 
-    // Envío del formulario a través de fetch() hacia la URL de Google Sheets
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Recolectar datos del formulario
       const formData = new FormData(this);
       const data = {};
       formData.forEach((value, key) => {
         data[key] = value;
       });
 
-      // URL de la Base de Datos en Google Sheets (reemplaza "BASE DE DATOS" con la URL real)
-      const googleSheetsUrl = "BASE DE DATOS";
+      const googleSheetsUrl = "https://script.google.com/macros/s/AKfycbyiPCGFbSWTK1MeEmV2un8C0L3IvLfEO-wn9_JdfWhtCp7Kw3-K8UYuOJY-5eIJUIW3/exec";
 
       fetch(googleSheetsUrl, {
         method: 'POST',
@@ -328,14 +302,10 @@
         },
         body: JSON.stringify(data)
       }).then(() => {
-        // Mostrar mensaje de confirmación
         const confirmationEl = document.getElementById('confirmationMessage');
         confirmationEl.style.display = 'block';
-        // Limpiar el formulario
         document.getElementById('bookingForm').reset();
-        // Realizar scroll suavemente hacia la parte superior
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        // Ocultar el mensaje luego de 5 segundos
         setTimeout(() => {
           confirmationEl.style.display = 'none';
         }, 5000);
