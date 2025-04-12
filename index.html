@@ -7,9 +7,9 @@
   <style>
     /* Reset básico */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
     body {
       font-family: Arial, sans-serif;
@@ -33,8 +33,8 @@
       padding: 20px;
       display: flex;
       align-items: center;
-      gap: 15px;
       flex-wrap: wrap;
+      gap: 15px;
     }
     header img {
       max-width: 80px;
@@ -95,7 +95,7 @@
       background-color: #fafafa;
       display: none;
     }
-    /* Estilos del formulario */
+    /* Formulario de agendamiento */
     form {
       padding: 20px;
     }
@@ -164,7 +164,7 @@
     <!-- Cabecera institucional -->
     <header>
       <!-- Logo cargado desde GitHub -->
-      <img src="https://raw.githubusercontent.com/sandragalo/logo_TheCookery/main/logo.png" alt="Logo The Cookery">
+      <img src="https://github.com/sandragalo/thecookery3/blob/main/logo_TheCookery2.png" alt="Logo The Cookery">
       <h1>Escuela de Cocina para Niños</h1>
     </header>
 
@@ -211,7 +211,7 @@
             <span class="indicator">+</span>
           </div>
           <div class="accordion-content">
-            <p>Un espacio en el que se experimenta con recetas innovadoras y se promueve el aprendizaje activo durante las tardes.</p>
+            <p>Un espacio para experimentar con recetas innovadoras y promover el aprendizaje activo durante las tardes.</p>
           </div>
         </div>
         <!-- Clase de Parejas -->
@@ -231,7 +231,7 @@
             <span class="indicator">+</span>
           </div>
           <div class="accordion-content">
-            <p>Organiza un evento privado y personalizado, donde puedas disfrutar de una experiencia culinaria exclusiva adaptada a tus gustos.</p>
+            <p>Organiza un evento privado y personalizado para disfrutar de una experiencia culinaria exclusiva adaptada a tus gustos.</p>
           </div>
         </div>
       </div>
@@ -246,11 +246,8 @@
           <input type="text" id="nombre" name="nombre" required>
         </div>
         <div class="form-group">
-          <label for="telefono">Teléfono (10 dígitos)</label>
-          <input type="tel" id="telefono" name="telefono" 
-                 pattern="\\d{10}" 
-                 title="Ingresa 10 dígitos numéricos" 
-                 required>
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" required>
         </div>
         <div class="form-group">
           <label for="correo">Correo electrónico</label>
@@ -292,9 +289,9 @@
     </section>
   </div>
 
-  <!-- JavaScript: Funcionalidades de Acordeón, Validación y Envío de Formulario -->
+  <!-- JavaScript: Funciones de Acordeón, validación y envío del formulario -->
   <script>
-    // Función para el acordeón: alterna la visibilidad de cada contenido al hacer click
+    // Acordeón: Alterna la visibilidad de la descripción de cada especialidad
     document.querySelectorAll('.accordion-header').forEach(header => {
       header.addEventListener('click', function() {
         const content = this.nextElementSibling;
@@ -309,21 +306,9 @@
       });
     });
 
-    // Función para validar el campo de teléfono (10 dígitos)
-    function validatePhone(phone) {
-      const regex = /^\\d{10}$/;
-      return regex.test(phone);
-    }
-
-    // Envío del formulario y conexión a Google Sheets mediante fetch()
+    // Envío del formulario a través de fetch() hacia la URL de Google Sheets
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      
-      const telefono = document.getElementById('telefono').value.trim();
-      if (!validatePhone(telefono)) {
-        alert("Por favor, ingresa un número de teléfono válido de 10 dígitos.");
-        return;
-      }
 
       // Recolectar datos del formulario
       const formData = new FormData(this);
@@ -332,7 +317,7 @@
         data[key] = value;
       });
 
-      // URL de la base de datos en Google Sheets (reemplaza 'BASE DE DATOS' por la URL real si es necesario)
+      // URL de la Base de Datos en Google Sheets (reemplaza "BASE DE DATOS" con la URL real)
       const googleSheetsUrl = "BASE DE DATOS";
 
       fetch(googleSheetsUrl, {
@@ -342,26 +327,22 @@
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-      })
-      .then(() => {
+      }).then(() => {
         // Mostrar mensaje de confirmación
         const confirmationEl = document.getElementById('confirmationMessage');
         confirmationEl.style.display = 'block';
         // Limpiar el formulario
         document.getElementById('bookingForm').reset();
-        // Hacer scroll hacia la parte superior suavemente
+        // Realizar scroll suavemente hacia la parte superior
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        // Ocultar mensaje después de 5 segundos
+        // Ocultar el mensaje luego de 5 segundos
         setTimeout(() => {
           confirmationEl.style.display = 'none';
         }, 5000);
-      })
-      .catch(error => {
+      }).catch(error => {
         console.error("Error al enviar el formulario:", error);
       });
     });
   </script>
 </body>
 </html>
-
-
