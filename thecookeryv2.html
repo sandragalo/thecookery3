@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Escuela de Cocina para Niños</title>
+  <style>
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    /* Contenedor principal */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    /* Cabecera */
+    header {
+      background-color: #e0f7f0; /* Verde menta suave */
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    header img {
+      max-width: 80px;
+      border-radius: 50%;
+    }
+    header h1 {
+      font-size: 1.8em;
+      color: #2d7a6d;
+    }
+    /* Secciones institucionales */
+    section {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    section:last-of-type {
+      border-bottom: none;
+    }
+    h2 {
+      color: #2d7a6d;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+    /* Acordeón para cursos y talleres */
+    .accordion {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .accordion-item + .accordion-item {
+      border-top: 1px solid #ddd;
+    }
+    .accordion-header {
+      background-color: #e0f7f0;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .accordion-header:hover {
+      background-color: #c6ece0;
+    }
+    .accordion-header span.title {
+      font-weight: bold;
+      color: #2d7a6d;
+    }
+    .accordion-header span.indicator {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .accordion-content {
+      padding: 15px;
+      background-color: #fafafa;
+      display: none;
+    }
+    /* Estilos del formulario */
+    form {
+      padding: 20px;
+    }
+    form .form-group {
+      margin-bottom: 15px;
+    }
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #2d7a6d;
+    }
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"],
+    form input[type="date"],
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    form textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    form button {
+      background-color: #2d7a6d;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 1em;
+    }
+    form button:hover {
+      background-color: #245e54;
+    }
+    /* Mensaje de confirmación */
+    .confirmation {
+      margin-top: 15px;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      header img {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Cabecera institucional -->
+    <header>
+      <!-- Logo cargado desde GitHub -->
+      <img src="https://raw.githubusercontent.com/sandragalo/logo_TheCookery/main/logo.png" alt="Logo The Cookery">
+      <h1>Escuela de Cocina para Niños</h1>
+    </header>
+
+    <!-- Información institucional -->
+    <section id="institucional">
+      <h2>¿Quiénes somos?</h2>
+      <p>Somos una escuela de cocina para niños y adultos, comprometidos con la educación y el entretenimiento culinario.</p>
+      <h2>Misión</h2>
+      <p>Inspirar y educar, fomentando el amor por la cocina saludable y creativa. Proporcionamos un ambiente seguro y divertido donde los niños exploren, experimenten y aprendan habilidades culinarias fundamentales mientras desarrollan una apreciación por los alimentos frescos y nutritivos.</p>
+      <h2>Visión</h2>
+      <p>Aspiramos a ser líderes en la educación culinaria infantil, siendo reconocidos por nuestra excelencia en la enseñanza de habilidades culinarias, nutrición y hábitos alimenticios saludables, logrando ser un espacio de creatividad, aprendizaje y diversión culinaria para niños de todas las edades y habilidades, promoviendo una cultura de bienestar y alimentación consciente desde una edad temprana.</p>
+      <h2>Valores</h2>
+      <p>Creatividad, Respeto por los alimentos, Salud y bienestar, inclusión, aprendizaje activo, seguridad alimentaria, trabajo en equipo, responsabilidad, empoderamiento, divertimento.</p>
+    </section>
+
+    <!-- Cursos y talleres (acordeón) -->
+    <section id="cursos">
+      <h2>Cursos y Talleres</h2>
+      <div class="accordion">
+        <!-- Viernes de Consejo -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="title">Viernes de Consejo</span>
+            <span class="indicator">+</span>
+          </div>
+          <div class="accordion-content">
+            <p>Los viernes de consejo técnico se transforman en un viernes de cocina para los niños, fusionando creatividad, aprendizaje y diversión.</p>
+          </div>
+        </div>
+        <!-- Clase de Mujeres -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="title">Clase de Mujeres</span>
+            <span class="indicator">+</span>
+          </div>
+          <div class="accordion-content">
+            <p>Un espacio dedicado a las mujeres para compartir, experimentar y crear nuevas recetas en un ambiente de apoyo y colaboración.</p>
+          </div>
+        </div>
+        <!-- Clases por la Tarde -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="title">Clases por la Tarde</span>
+            <span class="indicator">+</span>
+          </div>
+          <div class="accordion-content">
+            <p>Un espacio en el que se experimenta con recetas innovadoras y se promueve el aprendizaje activo durante las tardes.</p>
+          </div>
+        </div>
+        <!-- Clase de Parejas -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="title">Clase de Parejas</span>
+            <span class="indicator">+</span>
+          </div>
+          <div class="accordion-content">
+            <p>El momento especial para reconectar con tu pareja, disfrutando de la cocina y creando recuerdos únicos.</p>
+          </div>
+        </div>
+        <!-- Evento Privado -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="title">Evento Privado</span>
+            <span class="indicator">+</span>
+          </div>
+          <div class="accordion-content">
+            <p>Organiza un evento privado y personalizado, donde puedas disfrutar de una experiencia culinaria exclusiva adaptada a tus gustos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario para agendar clases -->
+    <section id="formulario">
+      <h2>Agenda tu Clase</h2>
+      <form id="bookingForm">
+        <div class="form-group">
+          <label for="nombre">Nombre completo del participante</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono (10 dígitos)</label>
+          <input type="tel" id="telefono" name="telefono" 
+                 pattern="\\d{10}" 
+                 title="Ingresa 10 dígitos numéricos" 
+                 required>
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" required>
+        </div>
+        <div class="form-group">
+          <label for="sexo">Sexo</label>
+          <select id="sexo" name="sexo" required>
+            <option value="">Seleccione</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="especialidad">Especialidad</label>
+          <select id="especialidad" name="especialidad" required>
+            <option value="">Seleccione</option>
+            <option value="Viernes de Consejo">Viernes de Consejo</option>
+            <option value="Clase de Mujeres">Clase de Mujeres</option>
+            <option value="Clases por la Tarde">Clases por la Tarde</option>
+            <option value="Clase de Parejas">Clase de Parejas</option>
+            <option value="Evento Privado">Evento Privado</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" name="fecha" required>
+        </div>
+        <div class="form-group">
+          <label for="comentarios">Comentarios</label>
+          <textarea id="comentarios" name="comentarios"></textarea>
+        </div>
+        <button type="submit">Agendar Clase</button>
+        <div class="confirmation" id="confirmationMessage">
+          ✅ Gracias, tu clase ha sido agendada. ⏳ Redirigiendo al inicio... 🎉 Te contactaremos pronto.
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <!-- JavaScript: Funcionalidades de Acordeón, Validación y Envío de Formulario -->
+  <script>
+    // Función para el acordeón: alterna la visibilidad de cada contenido al hacer click
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', function() {
+        const content = this.nextElementSibling;
+        const indicator = this.querySelector('.indicator');
+        if (content.style.display === 'block') {
+          content.style.display = 'none';
+          indicator.textContent = '+';
+        } else {
+          content.style.display = 'block';
+          indicator.textContent = '-';
+        }
+      });
+    });
+
+    // Función para validar el campo de teléfono (10 dígitos)
+    function validatePhone(phone) {
+      const regex = /^\\d{10}$/;
+      return regex.test(phone);
+    }
+
+    // Envío del formulario y conexión a Google Sheets mediante fetch()
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const telefono = document.getElementById('telefono').value.trim();
+      if (!validatePhone(telefono)) {
+        alert("Por favor, ingresa un número de teléfono válido de 10 dígitos.");
+        return;
+      }
+
+      // Recolectar datos del formulario
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      // URL de la base de datos en Google Sheets (reemplaza 'BASE DE DATOS' por la URL real si es necesario)
+      const googleSheetsUrl = "BASE DE DATOS";
+
+      fetch(googleSheetsUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        // Mostrar mensaje de confirmación
+        const confirmationEl = document.getElementById('confirmationMessage');
+        confirmationEl.style.display = 'block';
+        // Limpiar el formulario
+        document.getElementById('bookingForm').reset();
+        // Hacer scroll hacia la parte superior suavemente
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Ocultar mensaje después de 5 segundos
+        setTimeout(() => {
+          confirmationEl.style.display = 'none';
+        }, 5000);
+      })
+      .catch(error => {
+        console.error("Error al enviar el formulario:", error);
+      });
+    });
+  </script>
+</body>
+</html>
+
+
